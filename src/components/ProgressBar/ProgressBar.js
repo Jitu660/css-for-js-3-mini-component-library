@@ -25,7 +25,7 @@ const STYLES = {
 const ProgressBar = ({ value, size }) => {
   let styles = STYLES[size];
   return (
-    <BarWrapper style={styles} role="progressbar" aria-valuemax={100} aria-valuemin={0}>
+    <BarWrapper style={styles} role="progressbar" aria-valuemax="100" aria-valuemin="0" aria-valuenow={value} >
       <VisuallyHidden>{value}%</VisuallyHidden>
       <Trimmer>
       <Bar value={value}></Bar>
@@ -38,6 +38,7 @@ const BarWrapper = styled.div`
   padding: var(--spacing);
   border-radius: var(--outer-radius);
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
+  background-color: ${COLORS.transparentGray15};
 `;
 const Bar = styled.div`
   background-color: ${COLORS.primary};
@@ -45,6 +46,7 @@ const Bar = styled.div`
   height: var(--bar-height);
 `;
 const Trimmer = styled.div`
+  /* to make the progress bar rounded on both corners */
   overflow: hidden;
   border-radius: 4px;
 `;
